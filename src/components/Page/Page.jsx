@@ -15,10 +15,10 @@ const Page = () => {
       <Header />
       <div className="box">
         <Form />
-        {isError && <Error />}
+        {isError && <Error message={isError}/>}
         {isLoading && <Loader />}
-        {forecast && <Forecast />}
       </div>
+        {forecast && <Forecast />}
     </Fragment>
   );
 };
