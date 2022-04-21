@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import "./Form.css";
 
-const Form = () => {
+const Form = ({submitSearch}) => {
   const [location, setLocation] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
     if (!location || location === "") return;
+    submitSearch(location);
   };
 
   return (
@@ -13,7 +15,7 @@ const Form = () => {
       <input
         aria-label="location"
         type="text"
-        className="input form-control"
+        className="input form- control"
         placeholder="Buscar una ubicación"
         required
         value={location}
@@ -25,5 +27,9 @@ const Form = () => {
     </form>
   );
 };
+
+Form.propTypes = {
+    submitSearch: PropTypes.func.isRequired,
+}
 
 export default Form;
