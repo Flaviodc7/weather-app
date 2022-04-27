@@ -1,34 +1,12 @@
-const getCurrentDayForecast = data => [
-    {
-        name: "predictibilidad",
-        value: data.predictability,
-        unit: "%",
-    },
-    {
-        name: "humedad",
-        value: data.humidity,
-        unit: "%",
-    },
-    {
-        name: "viento",
-        value: Math.round(data.wind_speed),
-        unit: "km/h",
-    },
-    {
-        name: "presión aerea",
-        value: data.air_pressure,
-        unit: "mb",
-    },
-    {
-        name: "temperatura máxima",
-        value: Math.round(data.max_temp),
-        unit: "°C",
-    },
-    {
-        name: "temperatura mínima",
-        value: Math.round(data.min_temp),
-        unit: "°C",
-    }
-];
+import moment from 'moment';
+
+const getCurrentDayForecast = (data, title) => ({
+    weekday: moment(data.applicable_date).format('dddd'),
+    date: moment(data.applicable_date).format('MMMM Do'),
+    location: title,
+    temperature: Math.round(data.the_temp),
+    weatherIcon: 'https://www.metaweather.com/static/img/weather/${data.weather_state_abbr}.svg',
+    weatherDescription: data.wheater_state_name,
+});
 
 export default getCurrentDayForecast;
