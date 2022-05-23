@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
-import './UpcomingDaysForecast.css'
+import "./UpcomingDaysForecast.css";
 
 const UpcomingDaysForecast = () => {
-  return (
-    <ul className="weekList d-flex justify-content-between p-0"></ul>
-  )
-}
+  return <ul className="weekList d-flex justify-content-between p-0"></ul>;
+};
 
-export default UpcomingDaysForecast
+export default UpcomingDaysForecast;

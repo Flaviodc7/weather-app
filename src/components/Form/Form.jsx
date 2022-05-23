@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "./Form.css";
 
-const Form = ({submitSearch}) => {
+const Form = ({ submitSearch }) => {
   const [location, setLocation] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ const Form = ({submitSearch}) => {
 };
 
 Form.propTypes = {
-    submitSearch: PropTypes.func.isRequired,
-}
+  submitSearch: PropTypes.func.isRequired,
+};
 
 export default Form;
