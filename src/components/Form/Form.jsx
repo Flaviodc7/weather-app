@@ -15,7 +15,7 @@ const Form = ({ submitSearch }) => {
       <input
         aria-label="location"
         type="text"
-        className="input form- control"
+        className="input form-control"
         placeholder="Buscar una ubicación"
         required
         value={location}
