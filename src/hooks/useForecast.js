@@ -16,24 +16,36 @@ const useForecast = () => {
     });
 
     if (!data || data.length === 0) {
-      setError("No se encuentra la ubicacón");
+      setError("No se encuentra la ubicación");
+      setLoading(false);
+      return;
+    }
+    return data[0];
+  };
+
+  const getForecastData = async (woeid) => {
+    const { data } = await axios(`${REQUEST_URL}/${woeid}`);
+    if (!data || data.length === 0) {
+      setError("Algo salió mal");
+      setLoading(false);
       return;
     }
     return data;
   };
 
-  const getForecastData = async (woeid) => {
-    const { data } = await axios(`${REQUEST_URL}/${woeid}`);
-    return response.data;
-  };
-
   const submitRequest = async (location) => {
-    const data = await getWoeid(location);
+    setLoading(true);
+    setError(false);
+    const response = await getWoeid(location);
+    if (!response.woeid) return;
 
-    const response = await getForecastData(data[0].woeid);
+    const data = await getForecastData(response.woeid);
+    if (!data) return;
+
+    console.log({ data });
   };
 
-  return isError, isLoading, forecast;
+  return { isError, isLoading, forecast, submitRequest };
 };
 
 export default useForecast;

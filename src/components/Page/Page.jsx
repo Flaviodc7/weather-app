@@ -18,7 +18,7 @@ const Page = () => {
   return (
     <Fragment>
       <Header />
-      <div className="box">
+      <div className="box position-relative">
         {!isLoading && <Form submitSearch={onSubmit} />}
         {isError && <Error message={isError} />}
         {isLoading && <Loader />}
